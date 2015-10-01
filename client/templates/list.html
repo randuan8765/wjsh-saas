@@ -1,0 +1,31 @@
+<template name="list">
+
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionTabs style="android"}}
+    {{> ionTab title="待处理" path="tabs.one1" iconOff="ios-home-outline" iconOn="ios-home"}}
+    {{> ionTab title="清洗中" path="tabs.two1" iconOff="ios-star-outline" iconOn="ios-star"}}
+    {{> ionTab title="客户未取" path="tabs.three1" iconOff="ios-heart-outline" iconOn="ios-heart"}}
+  {{/ionTabs}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each products}}
+          {{#ionItem pbuttonRight=true avatar=true class="my-class" id="my-id"}}
+            <h2>John Smith</h2>
+            <p>(555) 555-1212</p>
+            <button class="button button-positive">
+              {{> ionIcon icon="ios-telephone"}}
+            </button>
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

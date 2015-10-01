@@ -1,0 +1,21 @@
+<template name="storeClassBusinesses">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="storeClasses" text="业务分类"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">业务列表</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent class="padding contact-detail"}}
+      {{#with storeClass}}
+        111
+      {{/with}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

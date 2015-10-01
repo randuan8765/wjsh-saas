@@ -1,0 +1,67 @@
+<template name="businessLayout">
+  {{#ionBody}}
+
+    {{#ionSideMenuContainer}}
+
+      {{#ionSideMenus}}
+
+        {{#ionSideMenu}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">福奈特</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+              <div class="item item-icon-left" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                历史订单
+              </div>
+              <a class="item item-icon-left" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                客户经理
+              </a>
+              <a class="item item-icon-left" href="/business" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                业务设置
+              </a>
+              <a class="item item-icon-left" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                系统设置
+              </a>
+              <a class="item item-icon-left ion-logout" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                登出
+              </a>
+
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+        {{#ionSideMenu side="right"}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">Right Menu</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+              <div class="item item-icon-left" data-ion-menu-close>
+                {{> ionIcon icon="ios-arrow-left"}} Close Me
+              </div>
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+      {{/ionSideMenus}}
+
+      {{#ionSideMenuContent}}
+
+        {{> ionNavBar class="bar-positive"}}
+
+        {{#ionNavView}}
+          {{> yield}}
+        {{/ionNavView}}
+
+      {{/ionSideMenuContent}}
+
+    {{/ionSideMenuContainer}}
+
+  {{/ionBody}}
+</template>

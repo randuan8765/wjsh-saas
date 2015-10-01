@@ -1,0 +1,81 @@
+<template name="layout">
+  {{#ionBody}}
+
+    {{#ionSideMenuContainer}}
+
+      {{#ionSideMenus}}
+
+        {{#ionSideMenu}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">福奈特</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+              <div class="item item-icon-left" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                历史订单
+              </div>
+              <a class="item item-icon-left" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                客户经理
+              </a>
+              <a class="item item-icon-left" href="/storeClasses" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                业务设置
+              </a>
+              <a class="item item-icon-left" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                系统设置
+              </a>
+              <a class="item item-icon-left ion-logout" href="#" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                登出
+              </a>
+
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+        {{#ionSideMenu side="right"}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">Right Menu</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+              <div class="item item-icon-left" data-ion-menu-close>
+                {{> ionIcon icon="ios-arrow-left"}} Close Me
+              </div>
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+      {{/ionSideMenus}}
+
+      {{#ionSideMenuContent}}
+
+        {{> ionNavBar class="bar-positive"}}
+
+        {{#ionNavView}}
+          {{> yield}}
+        {{/ionNavView}}
+
+        <!-- 等弄好把下面这两个tab单独拎出来，因为有的页面不需要 ，而且把active改一下-->
+      <!--  {{#ionTabs style="android"}}
+          {{> ionTab title="待处理" path="tabs.one1" iconOff="ios-home-outline" iconOn="ios-home"}}
+          {{> ionTab title="清洗中" path="tabs.two1" iconOff="ios-star-outline" iconOn="ios-star"}}
+          {{> ionTab title="客户未取" path="tabs.three1" iconOff="ios-heart-outline" iconOn="ios-heart"}}
+        {{/ionTabs}}-->
+
+        {{#ionTabs style="ios"}}
+          {{> ionTab title="洗鞋" path="tabs.two" icon="ios-star-outline" class="create-shoe-self-defined"}}
+          {{> ionTab title="皮具" path="tabs.three" icon="ios-heart-outline" class="create-leatherware-self-defined"}}
+          {{> ionTab title="取衣" path="tabs.four" icon="ios-gear-outline"}}
+
+        {{/ionTabs}}
+
+      {{/ionSideMenuContent}}
+
+    {{/ionSideMenuContainer}}
+
+  {{/ionBody}}
+</template>
