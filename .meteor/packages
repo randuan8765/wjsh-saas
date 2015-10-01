@@ -1,0 +1,44 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+accounts-password
+iron:router
+zimme:iron-router-active
+anti:fake
+matb33:collection-hooks
+aldeed:collection2
+aldeed:moment-timezone
+aldeed:delete-button
+aldeed:autoform-bs-datepicker
+aldeed:autoform-select2
+aldeed:autoform-bs-button-group-input
+aldeed:autoform-bs-datetimepicker
+meteoric:ionic-sass@0.3.0
+meteoric:ionicons-sass@0.1.7
+meteoric:ionic@0.1.19
+meteoric:autoform-ionic
+useraccounts:ionic
+useraccounts:iron-routing
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+service-configuration
+reywood:publish-composite
+dburles:collection-helpers
+okland:accounts-phone
+softwarerero:accounts-t9n
+aldeed:template-extension
+aldeed:autoform
