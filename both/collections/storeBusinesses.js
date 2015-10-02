@@ -1,13 +1,13 @@
-StoreClasses = new Mongo.Collection("storeClasses");
+StoreBusinesses = new Mongo.Collection("storeBusinesses");
 
-StoreClasses.before.insert(function (userId, doc) {
+StoreBusinesses.before.insert(function (userId, doc) {
   doc.createdAt = new Date();
 });
 
-StoreClasses.attachSchema(new SimpleSchema({
+StoreBusinesses.attachSchema(new SimpleSchema({
   name: {
     type: String,
-    label: "分类名称",
+    label: "业务名称",
   },
   storeId: {
     type: String,
@@ -17,6 +17,19 @@ StoreClasses.attachSchema(new SimpleSchema({
       }
       if (this.isInsert) {
         return Session.get("storeId");
+      } else {
+        this.unset();
+      }
+    }
+  },
+  classId: {
+    type: String,
+    autoValue: function () {
+      if (this.isSet) {
+        return;
+      }
+      if (this.isInsert) {
+        return Session.get("classId");
       } else {
         this.unset();
       }

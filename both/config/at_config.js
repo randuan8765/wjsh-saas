@@ -57,23 +57,6 @@ AccountsTemplates.configure({
     },
     onSubmitHook: function(error, state) {
       if (!error) {
-        if (state === "signIn") {
-          // Successfully logged in
-          // ...
-
-        }
-        if (state === "signUp") {
-          // Successfully registered
-          // ...
-        }
-        Meteor.subscribe("store", {
-          onReady: function() {alert(1)}
-        });
-        alert(2);
-      }
-    },
-    onSubmitHook: function(error, state) {
-      if (!error) {
         IonModal.close('signUp');
         if (state === "signIn") {
           // Successfully logged in
@@ -84,7 +67,7 @@ AccountsTemplates.configure({
           // Successfully registered
           // ...
         }
-        alert(Meteor.user().profile.verificationCode);
+        Session.set("storeId", Meteor.user().profile.storeId);
       }
     }
 });

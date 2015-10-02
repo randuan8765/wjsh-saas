@@ -4,18 +4,23 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title">业务列表</h1>
+    <h1 class="title">{{storeClass.name}}</h1>
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
-
+    <button class="button button-clear" data-ion-modal="_storeClassBusinessNew">{{> ionIcon icon="ios-plus-empty"}}</button>
   {{/contentFor}}
 
   {{#ionView}}
-    {{#ionContent class="padding contact-detail"}}
-      {{#with storeClass}}
-        111
-      {{/with}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each storeClassBusinesses}}
+          {{#ionItem path="storeClass.businesses" buttonRight=true avatar=true class="item-icon-right"}}
+            {{name}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
     {{/ionContent}}
   {{/ionView}}
 </template>

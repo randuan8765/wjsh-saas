@@ -1,14 +1,4 @@
-Template.layout.events({
-  'click .create-shoe-self-defined': function (event, template) {
 
-    IonModal.open('createShoe');
-    IonModal.open('createShoeItem');
-  },
-  'click .ion-logout': function (event, template) {
-    alert('logout');
-    AccountsTemplates.logout();
-  }
-});
 
 Template.list.helpers({
   times: function () {

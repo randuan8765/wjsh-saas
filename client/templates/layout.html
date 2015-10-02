@@ -66,12 +66,21 @@
           {{> ionTab title="客户未取" path="tabs.three1" iconOff="ios-heart-outline" iconOn="ios-heart"}}
         {{/ionTabs}}-->
 
-        {{#ionTabs style="ios"}}
-          {{> ionTab title="洗鞋" path="tabs.two" icon="ios-star-outline" class="create-shoe-self-defined"}}
-          {{> ionTab title="皮具" path="tabs.three" icon="ios-heart-outline" class="create-leatherware-self-defined"}}
-          {{> ionTab title="取衣" path="tabs.four" icon="ios-gear-outline"}}
 
-        {{/ionTabs}}
+        <div class="tabs tabs-icon-top">
+          {{#each storeClasses}}
+            <a class="tab-item create-new-item" id="{{_id}}">
+              <i class="icon ion-ios-star-outline"></i>
+              {{name}}
+            </a>
+          {{/each}}
+        </div>
+
+        <!--{{> ionTab title="洗鞋" path="tabs.two" icon="ios-star-outline" class="create-shoe-self-defined"}}
+        {{> ionTab title="皮具" path="tabs.three" icon="ios-heart-outline" class="create-leatherware-self-defined"}}
+        {{> ionTab title="取衣" path="tabs.four" icon="ios-gear-outline"}}-->
+
+
 
       {{/ionSideMenuContent}}
 
