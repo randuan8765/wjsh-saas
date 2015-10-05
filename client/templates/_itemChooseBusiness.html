@@ -1,0 +1,12 @@
+<template name="itemChooseBusiness">
+  {{#ionModal title="选择物品"}}
+  <ul class="list">
+    {{#each storeClassBusinesses}}
+    <li class="item selected-business-row" id={{_id}}>
+      名称：{{name}} 对外价钱：{{price}}
+    </li>
+    {{/each}}
+</ul>
+
+  {{/ionModal}}
+</template>

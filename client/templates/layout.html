@@ -7,17 +7,21 @@
 
         {{#ionSideMenu}}
           <div class="bar bar-header bar-dark">
-            <h1 class="title">福奈特</h1>
+            <h1 class="title">{{store.name}}</h1>
           </div>
           <div class="content has-header">
             <div class="list">
-              <div class="item item-icon-left" data-ion-menu-close>
+              <a class="item item-icon-left" href="/" data-ion-menu-close>
+                <i class="icon ion-email"></i>
+                订单
+              </a>
+              <a class="item item-icon-left" data-ion-menu-close>
                 <i class="icon ion-email"></i>
                 历史订单
-              </div>
-              <a class="item item-icon-left" href="#" data-ion-menu-close>
+              </a>
+              <a class="item item-icon-left" href="/contacts" data-ion-menu-close>
                 <i class="icon ion-email"></i>
-                客户经理
+                联系我们
               </a>
               <a class="item item-icon-left" href="/storeClasses" data-ion-menu-close>
                 <i class="icon ion-email"></i>
@@ -65,21 +69,6 @@
           {{> ionTab title="清洗中" path="tabs.two1" iconOff="ios-star-outline" iconOn="ios-star"}}
           {{> ionTab title="客户未取" path="tabs.three1" iconOff="ios-heart-outline" iconOn="ios-heart"}}
         {{/ionTabs}}-->
-
-
-        <div class="tabs tabs-icon-top">
-          {{#each storeClasses}}
-            <a class="tab-item create-new-item" id="{{_id}}">
-              <i class="icon ion-ios-star-outline"></i>
-              {{name}}
-            </a>
-          {{/each}}
-        </div>
-
-        <!--{{> ionTab title="洗鞋" path="tabs.two" icon="ios-star-outline" class="create-shoe-self-defined"}}
-        {{> ionTab title="皮具" path="tabs.three" icon="ios-heart-outline" class="create-leatherware-self-defined"}}
-        {{> ionTab title="取衣" path="tabs.four" icon="ios-gear-outline"}}-->
-
 
 
       {{/ionSideMenuContent}}

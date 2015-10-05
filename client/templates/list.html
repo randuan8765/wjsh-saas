@@ -1,8 +1,8 @@
 <template name="list">
-
+ssssssss
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='navicon'}}
+      {{> ionIcon icon='navicon-round'}}
     </button>
   {{/contentFor}}
 
@@ -27,5 +27,14 @@
       {{/ionList}}
     {{/ionContent}}
   {{/ionView}}
+
+  <div class="tabs tabs-icon-top">
+    {{#each storeClasses}}
+      <a class="tab-item create-new-item" id="{{_id}}">
+        <i class="icon ion-ios-star-outline"></i>
+        {{name}}
+      </a>
+    {{/each}}
+  </div>
 
 </template>

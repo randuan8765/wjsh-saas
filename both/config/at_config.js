@@ -57,17 +57,22 @@ AccountsTemplates.configure({
     },
     onSubmitHook: function(error, state) {
       if (!error) {
-        IonModal.close('signUp');
+        // IonModal.close('signUp');
         if (state === "signIn") {
           // Successfully logged in
           // ...
-
+          Meteor.defer(function(){
+            Router.go(Session.get('urlBeforeLogin'));
+          });
         }
         if (state === "signUp") {
           // Successfully registered
           // ...
+          Meteor.defer(function(){
+            Router.go(Session.get('urlBeforeLogin'));
+          });
         }
-        Session.set("storeId", Meteor.user().profile.storeId);
+
       }
     }
 });

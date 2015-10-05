@@ -1,0 +1,39 @@
+<template name="contacts">
+
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">联系我们</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#with area}}
+          {{#ionItem href="#" iconLeft=true employee=this.preManager class="contact-bd-actionSheet"}}
+            联系我的BD经理
+            {{> ionIcon icon="ios-telephone-outline" class="positive"}}
+          {{/ionItem}}
+
+          {{#ionItem href="#"  iconLeft=true employee=this.postManager class="contact-business-actionSheet"}}
+            联系我的业务经理
+            {{> ionIcon icon="ios-telephone" class="positive"}}
+          {{/ionItem}}
+        {{/with}}
+        {{#ionItem href="#"  iconLeft=true class="contact-400-actionSheet"}}
+          联系400客服
+          {{> ionIcon icon="ios-telephone-outline" class="positive"}}
+        {{/ionItem}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

@@ -7,9 +7,9 @@
     <h1 class="title">{{storeClass.name}}</h1>
   {{/contentFor}}
 
-  {{#contentFor "headerButtonRight"}}
+  <!--{{#contentFor "headerButtonRight"}}
     <button class="button button-clear" data-ion-modal="_storeClassBusinessNew">{{> ionIcon icon="ios-plus-empty"}}</button>
-  {{/contentFor}}
+  {{/contentFor}}-->
 
   {{#ionView}}
     {{#ionContent}}
@@ -17,7 +17,7 @@
         {{#each storeClassBusinesses}}
           {{#ionItem path="storeClass.businesses" buttonRight=true avatar=true class="item-icon-right"}}
             {{name}}
-            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            对外定价（管理端选填）{{price}}+对内定价
           {{/ionItem}}
         {{/each}}
       {{/ionList}}

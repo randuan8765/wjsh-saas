@@ -1,37 +1,35 @@
 
 
 Template.list.helpers({
-  times: function () {
-    var times = [];
-    _(20).times(function(n){
-      times.push(n);
-    });
-    return times;
+  storeClasses: function () {
+    return StoreClasses.find();
   },
-  products: function () {
-    return Products.find({}, {sort: {numberOfVotes: -1, name: -1}});
-  }
 });
 
-Template.list.created = function () {
-  this.autorun(function () {
-    // this.subscription = Meteor.subscribe('products');
-  }.bind(this));
-};
-
-Template.list.rendered = function () {
-
-  if (!Meteor.loggingIn() && !Meteor.user()) { //应该是任何模板都发生，但是尚不知道怎么放在顶级模板
-    IonModal.open('signUp');
-  }
-
-  // this.autorun(function () {
-  //   if (!this.subscription.ready()) {
-  //     alert(3);
-  //     IonLoading.show();
-  //   } else {
-  //     alert(4);
-  //     IonLoading.hide();
-  //   }
-  // }.bind(this));
-};
+// Template.factories.helpers({
+//   factories: function () {
+//     return Factories.find();
+//   },
+//   selectedFactoryDoc: function () {
+//     return Factories.findOne(Session.get("selectedFactoryId"));
+//   },
+//   isSelectedFactory: function () {
+//     return Session.equals("selectedFactoryId", this._id);
+//   },
+//   formType: function () {
+//     if (Session.get("selectedFactoryId")) {
+//       return "update";
+//     } else {
+//       return "insert";
+//     }
+//   }
+//
+// });
+//
+Template.list.events({
+  'click .create-new-item': function (event, template) {
+    IonModal.open('itemNew', {classId: event.currentTarget.id});
+    ;
+    IonModal.open('itemChooseBusiness', {storeClassBusinesses: StoreBusinesses.find({storeClassId: event.currentTarget.id})});
+  },
+});
