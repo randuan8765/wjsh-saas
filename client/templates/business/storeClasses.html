@@ -7,7 +7,7 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title">业务分类</h1>
+    <h1 class="title">分类</h1>
   {{/contentFor}}
 
 <!--
@@ -20,9 +20,10 @@
     {{#ionContent}}
       {{#ionList}}
         {{#each storeClasses}}
-          {{#ionItem path="storeClass.businesses" buttonRight=true avatar=true class="item-icon-right"}}
+          {{#ionItem path="storeClass.businesses" class="item-icon-left item-icon-right"}}
+            {{> ionIcon icon="record" class=color}}
             {{name}}
-            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            {{> ionIcon icon="ios-arrow-right" class="positive"}}
           {{/ionItem}}
         {{/each}}
       {{/ionList}}

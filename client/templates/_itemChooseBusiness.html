@@ -1,12 +1,26 @@
 <template name="itemChooseBusiness">
-  {{#ionModal title="选择物品"}}
-  <ul class="list">
-    {{#each storeClassBusinesses}}
-    <li class="item selected-business-row" id={{_id}}>
-      名称：{{name}} 对外价钱：{{price}}
-    </li>
-    {{/each}}
-</ul>
+  {{#ionModal customTemplate=true animation='slide-in-right'}}
+    <div class="bar bar-header bar-stable">
+      <button data-dismiss="modal" type="button" class="button button-clear"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">选择项目</h2>
+    </div>
+    <div class="content has-header overflow-scroll">
+      {{#ionList}}
+        {{#each storeClassBusinesses}}
+        <!--  {{#ionItem href="#" iconLeft=true business=this class="selected-business-row"}} -->
+        <label class="item-radio item">
+          {{#ionItem business=this class="selected-business-row wrapped-item"}}
 
+            <input type="radio" name="group">
+            <div class="item-content">
+              {{name}} <span class="item-note">{{#if price}}{{price}}{{else}}0{{/if}}元</span>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          {{/ionItem}}
+
+        </label>
+        {{/each}}
+      {{/ionList}}
+    </div>
   {{/ionModal}}
 </template>

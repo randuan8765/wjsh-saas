@@ -1,0 +1,43 @@
+<template name="cleaningOrders">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionTabs style="android"}}
+    {{> ionTab title="待清洗" class="nav-status" status="toClean" path="orders" iconOff="ios-calendar-outline" iconOn="ios-calendar"}}
+    {{> ionTab title="清洗中" class="nav-status" status="cleaning" path="cleaningOrders" iconOff="ios-ionic-outline" iconOn="ionic"}}
+    {{> ionTab title="客户未取" class="nav-status" status="returnedToStore" path="returnedToStoreOrders" iconOff="tshirt-outline" iconOn="tshirt"}}
+  {{/ionTabs}}
+
+  {{#ionView}}
+    {{#ionContent class="has-tabs"}}
+      {{#ionList}}
+        {{#each orders}}
+        <div class='order-row'>
+          <div class="item item-divider item-icon-right">
+            订单#{{this.[0].orderKey}}<!--<i class="icon ion-ios-arrow-right"></i>-->
+          </div>
+          {{#each this}}
+            {{#ionItem}}
+              #{{this.orderKey}}-{{this.subKey}}
+              <span class="item-note">{{this.business.name}} ({{pairToString this.colors}})</span>
+            {{/ionItem}}
+          {{/each}}
+        </div>
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+  <div class="tabs tabs-icon-top animated bounceInRight move-top-border">
+    {{#each storeClasses}}
+      <a class="tab-item create-new-item" id="{{_id}}">
+        <i class="icon ion-plus-circled {{color}}"></i>
+        {{name}}
+      </a>
+    {{/each}}
+  </div>
+
+</template>

@@ -1,0 +1,39 @@
+<template name="customers">
+
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">客户</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <input type="search" placeholder="请输入手机号查找" class="keyword"><!-- 根据姓名查找 -->
+          <!--<i class="icon ion-ios-close-empty placeholder-icon"></i>-->
+        </label>
+      </div>
+      {{#ionList}}
+        {{#each filteredCustomers}}
+          {{#ionItem path="customer.orders" class="selected-customer-row"}}
+            {{name}}{{titleTransfer gender}}
+            <span class="item-note">
+              {{mobile}}
+            </span>
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

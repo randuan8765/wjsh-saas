@@ -18,21 +18,37 @@
     {{#ionContent}}
       {{#ionList}}
         {{#with area}}
-          {{#ionItem href="#" iconLeft=true employee=this.preManager class="contact-bd-actionSheet"}}
-            联系我的BD经理
-            {{> ionIcon icon="ios-telephone-outline" class="positive"}}
+          {{#ionItem buttonRight=true href=preManager.preManagerMobile}}
+            <h2>{{preManager.preManagerName}}</h2>
+            <p>悟浄生活-DB经理</p>
+            <button class="button button-positive">
+              <i class="icon ion-ios-telephone"></i>
+            </button>
           {{/ionItem}}
-
-          {{#ionItem href="#"  iconLeft=true employee=this.postManager class="contact-business-actionSheet"}}
-            联系我的业务经理
-            {{> ionIcon icon="ios-telephone" class="positive"}}
+          {{#ionItem buttonRight=true href=postManager.postManagerMobile}}
+            <h2>{{postManager.postManagerName}}</h2>
+            <p>悟浄生活-业务经理</p>
+            <button class="button button-positive">
+              <i class="icon ion-ios-telephone"></i>
+            </button>
           {{/ionItem}}
         {{/with}}
-        {{#ionItem href="#"  iconLeft=true class="contact-400-actionSheet"}}
-          联系400客服
-          {{> ionIcon icon="ios-telephone-outline" class="positive"}}
+        {{#ionItem buttonRight=true href="tel:4008927597"}}
+          <h2>小浄</h2>
+          <p>悟浄生活-400客服电话</p>
+          <button class="button button-positive">
+            <i class="icon ion-ios-telephone"></i>
+          </button>
         {{/ionItem}}
+
       {{/ionList}}
+      {{#if noStore}}
+        <div class="card">
+          <div class="item item-text-wrap">
+            <i class="icon ion-locked"></i>&nbsp;对不起，商户信息尚未提交，暂时还不能查看订单。若有疑问，请拨打400电话联系我们！
+          </div>
+        </div>
+      {{/if}}
     {{/ionContent}}
   {{/ionView}}
 

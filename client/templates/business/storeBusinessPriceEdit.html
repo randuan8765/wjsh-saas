@@ -1,0 +1,27 @@
+<template name="storeBusinessPrice">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="storeClass.businesses" text=" " class="back-button"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{storeBusiness.name}}</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear price-save">保存</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        <!--<div class="item item-divider">
+
+        </div>-->
+        <label class="item item-input">
+          <i class="icon ion-social-yen placeholder-icon"></i>
+          <input type="text" name='price' value="{{storeBusiness.price}}" placeholder="门店价格">
+        </label>
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

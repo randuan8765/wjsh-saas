@@ -1,0 +1,33 @@
+<template name="customerOrders">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="customers" text=" " class="backToCustomers"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{customer.mobile}}</h1>
+    <!--{{#contentFor "headerButtonRight"}}
+      <a class="button icon-right ion-gear-a button-color button-{{storeClass.color}}" data-ion-popover="_classColors">修改颜色</a>
+    {{/contentFor}}-->
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each customerOrders}}
+        <div class='order-row'>
+          <div class="item item-divider item-icon-right">
+            订单#{{this.[0].orderKey}}
+          </div>
+          {{#each this}}
+            {{#ionItem}}
+              #{{this.orderKey}}-{{this.subKey}} ({{transferStatus this.status}})
+              <span class="item-note">{{this.business.name}} ({{pairToString this.colors}})</span>
+            {{/ionItem}}
+          {{/each}}
+        </div>
+
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

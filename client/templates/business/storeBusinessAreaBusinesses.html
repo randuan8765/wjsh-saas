@@ -1,0 +1,27 @@
+<template name="storeBusinessAreaBusinesses">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="storeClass.businesses" text=" "}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">成本价</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        <!--<div class="item item-divider">
+
+        </div>-->
+        {{#each areaBusinesses}}
+          {{#ionItem}}
+            {{name}}
+            <span class="item-note">
+              {{price}}元
+            </span>
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

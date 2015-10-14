@@ -1,26 +1,51 @@
 <template name="storeClassBusinesses">
   {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton path="storeClasses" text="业务分类"}}
+    {{>ionNavBackButton path="storeClasses" text=" "}}
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
     <h1 class="title">{{storeClass.name}}</h1>
+    <!--{{#contentFor "headerButtonRight"}}
+      <a class="button icon-right ion-gear-a button-color button-{{storeClass.color}}" data-ion-popover="_classColors">修改颜色</a>
+    {{/contentFor}}-->
   {{/contentFor}}
 
   <!--{{#contentFor "headerButtonRight"}}
     <button class="button button-clear" data-ion-modal="_storeClassBusinessNew">{{> ionIcon icon="ios-plus-empty"}}</button>
   {{/contentFor}}-->
 
+  {{#ionTabs style="android" class="nav-status-tabs"}}
+    {{> ionTab title="门店售价" class="nav-status" status="store" path="storeClass.businesses" iconOff="ios-calendar-outline" iconOn="ios-calendar"}}
+    {{> ionTab title="成本价" class="nav-status" status="wujing" path="#" iconOff="ios-ionic-outline" iconOn="ionic"}}
+  {{/ionTabs}}
+
   {{#ionView}}
     {{#ionContent}}
       {{#ionList}}
         {{#each storeClassBusinesses}}
-          {{#ionItem path="storeClass.businesses" buttonRight=true avatar=true class="item-icon-right"}}
+          {{#ionItem path="storeBusiness.price" class="item-icon-right business-item"}}
             {{name}}
-            对外定价（管理端选填）{{price}}+对内定价
+            <span class="item-note positive">
+              <label class='item-price'>{{price}}元</label><label class='item-area-business-count' style="display: none;">共{{count areaBusinessIds}}项</label>{{> ionIcon icon="ios-arrow-right" class='positive'}}
+            </span>
           {{/ionItem}}
+
         {{/each}}
       {{/ionList}}
     {{/ionContent}}
   {{/ionView}}
 </template>
+
+<!--<template name="_classColors">
+  {{#ionPopover}}
+    <div class="content">
+      <div class="list">
+        <a class="item item-icon-left" href="#">
+          {{> ionIcon icon="plus-circled calm"}}
+        </a>
+
+        </a>
+      </div>
+    </div>
+  {{/ionPopover}}
+</template>-->

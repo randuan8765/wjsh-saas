@@ -1,0 +1,17 @@
+<template name="orderDetail">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="orders" text=" "}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">订单#{{order.key}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent class="has-tabs"}}
+      {{order}}
+    {{/ionContent}}
+
+  {{/ionView}}
+
+</template>

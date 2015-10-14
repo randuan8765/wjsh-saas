@@ -1,0 +1,25 @@
+<template name="itemChooseDiscount">
+  {{#ionModal customTemplate=true}}
+    <div class="bar bar-header bar-stable">
+      <button data-dismiss="modal" type="button" class="button button-clear"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">选择折扣</h2>
+      <button type="submit" class="button button-positive button-clear">保存</button>
+    </div>
+    <div class="content has-header overflow-scroll">
+      {{#ionList}}
+        <label class="item item-input item-select selected-discount-row">
+          <div class="input-label">
+            折扣
+          </div>
+          <select>
+            {{#each discountPrices}}
+              <option selected="{{selected}}" value={{discount}}>{{name}}({{price}}元)</option>
+            {{/each}}
+          </select>
+        </label>
+
+      {{/ionList}}
+    </div>
+
+  {{/ionModal}}
+</template>

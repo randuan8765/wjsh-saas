@@ -37,3 +37,38 @@ $loading-font-size: 22px;
     top: 16px !important;
   }
 }
+
+.wrapped-item {
+  padding: 0px;
+}
+
+.disabled-item {
+  color: #aaa;
+}
+
+.tabs {
+  a{
+    text-decoration: none!important;
+  }
+  a:link, a:visited {
+    color: inherit;
+  }
+}
+
+.gender-row {
+  label {
+    vertical-align: middle;
+  }
+}
+
+.order-new-subfooter {
+  bottom: 48px;
+}
+
+.move-top-border {
+  border-top: 0px;
+}
+
+.slds-badge {
+  font-size: 0.825rem;
+}

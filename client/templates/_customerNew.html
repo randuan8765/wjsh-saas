@@ -1,0 +1,34 @@
+<template name="customerNew">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm collection="StoreCustomers" id="customer-new-form" type="insert"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">新增客户</h2>
+        <button type="submit" class="button button-positive button-clear">保存</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickField name='name'}}
+        <div class="row gender-row">
+           <div class="col">
+             <label class="checkbox">
+               <input type="checkbox" checked="{{isMale}}" value="male" name="gender-row-man">
+             </label>
+             <label class="gender-label padding-vertical">
+               先生
+             </label>
+           </div>
+           <div class="col">
+             <label class="checkbox">
+               <input type="checkbox" checked="{{isFemale}}" value="female" name="gender-row-woman">
+             </label>
+             <label class="gender-label padding-vertical">
+               女士
+             </label>
+           </div>
+         </div>
+        {{> afQuickField name='mobile' value=keyword}}
+        {{> afQuickField name='address'}}
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>

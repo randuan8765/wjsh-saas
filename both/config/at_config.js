@@ -13,6 +13,7 @@ AccountsTemplates.configure({
     //homeRoutePath: '/',
     //showAddRemoveServices: false,
     //showPlaceholders: true,
+    // showForgotPasswordLink: true,
 
 
     negativeValidation: false,
@@ -21,39 +22,8 @@ AccountsTemplates.configure({
     positiveFeedback: false,
 
     texts: {
-      title: {
-        changePwd: "Password Title",
-        enrollAccount: "Enroll Title",
-        forgotPwd: "Forgot Pwd Title",
-        resetPwd: "Reset Pwd Title",
-        signIn: "Sign In Title",
-        signUp: "Sign Up Title",
-        verifyEmail: "Verify Email Title",
-      }
-    },
-
-    texts: {
-        button: {
-          changePwd: "Password Text",
-          enrollAccount: "Enroll Text",
-          forgotPwd: "Forgot Pwd Text",
-          resetPwd: "Reset Pwd Text",
-          signIn: "Sign In Text",
-          signUp: "注册",
-        }
-    },
-
-    texts: {
-        errors: {
-            accountsCreationDisabled: "Client side accounts creation is disabled!!!",
-            cannotRemoveService: "Cannot remove the only active service!",
-            captchaVerification: "Captcha verification failed!",
-            loginForbidden: "error.accounts.Login 被禁",
-            mustBeLoggedIn: "error.accounts.Must be logged in",
-            pwdMismatch: "error.pwdsDontMatch",
-            validationErrors: "Validation Errors",
-            verifyEmailFirst: "Please verify your email first. Check the email and follow the link!",
-        }
+      minRequiredLength: "要求的最小长度",
+      requiredField: "必填项",
     },
     onSubmitHook: function(error, state) {
       if (!error) {
@@ -86,15 +56,18 @@ AccountsTemplates.addFields([
       displayName: "手机号",
       placeholder: "请输入手机号",
       required: true,
-      minLength: 11,
+      // minLength: 11,
+      // maxLength: 11,
+      errStr: '请输入11位手机号',
+      re: /[0-9]{11}/
   },
-  {
-      _id: "verificationCode",
-      type: "text",
-      displayName: "验证码",
-      placeholder: "请输入验证码",
-      required: true,
-      minLength: 4,
-  },
+  // {
+  //     _id: "verificationCode",
+  //     type: "text",
+  //     displayName: "验证码",
+  //     placeholder: "请输入验证码",
+  //     required: true,
+  //     minLength: 4,
+  // },
   pwd
 ]);

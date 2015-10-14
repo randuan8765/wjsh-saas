@@ -1,61 +1,149 @@
 <template name="itemNew">
-  {{#ionModal title="添加鞋靴"}}
-    <div class="padding-top">
+  {{#ionModal customTemplate=true}}
+    <div class="bar bar-header bar-stable">
+      <button data-dismiss="modal" type="button" class="button button-clear"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">{{class.name}}</h2>
+      {{#if update}}
+        <button class="button button-positive button-clear button-update">保存</button>
+      {{else}}
+        <button type="submit" class="button button-positive button-clear">创建</button>
+      {{/if}}
+    </div>
+    <div class="content has-header overflow-scroll">
       <div class="list">
         <div class="item item-divider">
-
         </div>
 
-        <a class="item item-icon-right" href="#">
-          服务名称{{classId}}
+        <a class="item item-icon-right item-business" href="#" id="{{class._id}}">
+          项目(必选项)
           <span class="item-note">
-            {{selectedItemBusiness}}{{> ionIcon icon="ios-arrow-right"}}
+            {{selectedItemBusiness.name}}{{> ionIcon icon="ios-arrow-right"}}
           </span>
         </a>
+        <div class="item item-text-wrap assertive must-choose-business-message" style="display: none">
+          <i class="icon ion-android-alert"></i> 必须选择一个项目
+        </div>
+        <div class="item item-icon-right disabled-item">
+          价格
+          <span class="item-note">
+            {{selectedItemBusiness.price}}元
+          </span>
+        </div>
+        {{#if hasSelectedItemBusiness}}
+          <a class="item item-icon-right item-discount" href="#">
+            折后价格
+            <span class="item-note">
+              {{selectedItemDiscount}}{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </a>
+        {{else}}
+          <div class="item item-icon-right disabled-item">
+            折后价格
+            <span class="item-note">
+              {{selectedItemDiscount}}{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </div>
+        {{/if}}
 
         <div class="item item-divider">
-
         </div>
 
-        <a class="item item-icon-right" href="#">
-          服务项目（上次说不这么弄了）
-          <span class="item-note">
-            共2项{{> ionIcon icon="ios-arrow-right"}}
-          </span>
-        </a>
-        <a class="item item-icon-right" href="#">
-          已选择：清洗、翻新
-        </a>
+        {{#if hasSelectedItemBusiness}}
+          <a class="item item-icon-right item-color" href="#">
+            颜色(必选项)
+            <span class="item-note">
+              共{{selectedColorsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </a>
+          <div class="item item-text-wrap assertive must-choose-color-message" style="display: none">
+            <i class="icon ion-android-alert"></i> 必须选择一种颜色，以辨认
+          </div>
+        {{else}}
+          <div class="item item-icon-right disabled-item">
+            颜色(必选项)
+            <span class="item-note">
+              共{{selectedColorsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </div>
+        {{/if}}
+        <div class="item item-icon-right disabled-item">
+          已选择：{{selectedColors}}
+        </div>
 
         <div class="item item-divider">
-
         </div>
 
-        <a class="item item-icon-right" href="#">
-          瑕疵
-          <span class="item-note">
-            变形,磨损{{> ionIcon icon="ios-arrow-right"}}
-          </span>
-        </a>
-        <a class="item item-icon-right" href="#">
-          洗后效果
-          <span class="item-note">
-            尽力洗{{> ionIcon icon="ios-arrow-right"}}
-          </span>
-        </a>
-        <a class="item item-icon-right" href="#">
-          配件
-          <span class="item-note">
-            鞋带{{> ionIcon icon="ios-arrow-right"}}
-          </span>
-        </a>
-        <a class="item item-icon-right" href="#">
-          颜色
-          <span class="item-note">
-            黑色{{> ionIcon icon="ios-arrow-right"}}
-          </span>
-        </a>
+        {{#if hasSelectedItemBusiness}}
+          <a class="item item-icon-right item-flaw" href="#">
+            瑕疵
+            <span class="item-note">
+              共{{selectedFlawsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </a>
+        {{else}}
+          <div class="item item-icon-right disabled-item">
+            瑕疵
+            <span class="item-note">
+              共{{selectedFlawsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </div>
+        {{/if}}
+        <div class="item item-icon-right disabled-item">
+          已选择：{{selectedFlaws}}
+        </div>
 
+        <div class="item item-divider">
+        </div>
+
+        {{#if hasSelectedItemBusiness}}
+          <a class="item item-icon-right item-effect" href="#">
+            洗后效果
+            <span class="item-note">
+              共{{selectedEffectsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </a>
+        {{else}}
+          <div class="item item-icon-right disabled-item">
+            洗后效果
+            <span class="item-note">
+              共{{selectedEffectsCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </div>
+        {{/if}}
+        <div class="item item-icon-right disabled-item">
+          已选择：{{selectedEffects}}
+        </div>
+
+        <div class="item item-divider">
+        </div>
+
+        {{#if hasSelectedItemBusiness}}
+          <a class="item item-icon-right item-accessory" href="#">
+            附件
+            <span class="item-note">
+              共{{selectedAccessoriesCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </a>
+        {{else}}
+          <div class="item item-icon-right disabled-item">
+            附件
+            <span class="item-note">
+              共{{selectedAccessoriesCount}}项{{> ionIcon icon="ios-arrow-right"}}
+            </span>
+          </div>
+        {{/if}}
+        <div class="item item-icon-right disabled-item">
+          已选择：{{selectedAccessories}}
+        </div>
+
+        <div class="item item-divider"><!-- 预估天数 -->
+        </div>
+
+        {{#if update}}
+          <button class="button button-full button-assertive button-delete">
+            删除
+          </button>
+        {{/if}}
       </div>
     </div>
   {{/ionModal}}

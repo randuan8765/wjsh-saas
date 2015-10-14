@@ -14,7 +14,15 @@ Router.onBeforeAction(function () {
   } else {
     // otherwise don't hold up the rest of hooks or our route/action function
     // from running
-    this.next();
+    console.log(Meteor.user().profile.storeId);
+    if(!Meteor.user().profile.storeId) {
+      console.log(Meteor.user());
+      Session.set('noStore', 'noStore');
+      this.render('contacts');
+    } else {
+      this.next();
+    }
+
   }
 });
 
@@ -28,44 +36,106 @@ Meteor.startup(function () {
   }
 });
 
+//记得把常用的subscription挪到全局定义里
 Router.map(function() {
-  this.route('list', {
+  this.route('orders', {
     path: '/',
-    subscriptions: function () {
+    // subscriptions: function () {
+    //
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
 
-      var array = [];
-      array.push(Meteor.subscribe("storeClasses"));
-      array.push(Meteor.subscribe("storeBusinesses"));
-      return array;
-    },
+  });
+  this.route('cleaningOrders', {
+    path: '/cleaningOrders',
+    // subscriptions: function () {
+    //
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
+
+  });
+  this.route('returnedToStoreOrders', {
+    path: '/returnedToStoreOrders',
+    // subscriptions: function () {
+    //
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
+
+  });
+  this.route('historyOrders', {
+    path: '/historyOrders',
+    // subscriptions: function () {
+    //
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
+
+  });
+  this.route('order.detail', {
+    path: 'orders/:_id',
+    // subscriptions: function () {
+    //
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
 
   });
   this.route('contacts', {
     path: '/contacts',
-    subscriptions: function () {
-      return Meteor.subscribe("area");
-    },
+    // subscriptions: function () {
+    //   return Meteor.subscribe("area"); 变名字了、放外面去
+    // },
+  });
+  this.route('customers', {
+    path: '/customers',
+  });
+  this.route('customer.orders', {
+    path: '/customers/:_id',
   });
   this.route('storeClasses', {
     path: '/storeClasses',
-    subscriptions: function () {
-      return Meteor.subscribe("storeClasses");
-    },
+    // subscriptions: function () {
+    //   return Meteor.subscribe("storeClasses");
+    // },
   });
   this.route('storeClass.businesses', {
     path: '/storeClasses/:_id',
-    subscriptions: function () {
-      var array = [];
-      array.push(Meteor.subscribe("storeClasses"));
-      array.push(Meteor.subscribe("storeBusinesses"));
-      return array;
-    },
+    // subscriptions: function () {
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
   });
-
+  this.route('storeBusiness.price', {
+    path: '/storebusiness/:_id',
+    // subscriptions: function () {
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
+  });
+  this.route('storeBusiness.areaBusinesses', {
+    path: '/storebusiness/:_id/areaBusinesses',
+    // subscriptions: function () {
+    //   var array = [];
+    //   array.push(Meteor.subscribe("storeClasses"));
+    //   array.push(Meteor.subscribe("storeBusinesses"));
+    //   return array;
+    // },
+  });
 });
-
-// Router.route('/', {
-//   // data: function() {
-//   //   return Stores.findOne({_id: this.params._id});
-//   // }
-// });

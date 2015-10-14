@@ -1,0 +1,131 @@
+<template name="orderNew">
+  {{#ionModal customTemplate=true}}
+    <div class="bar bar-header bar-stable">
+      <button data-dismiss="modal" type="button" class="button button-clear cancel-order"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">
+          {{#if update}}
+            订单#{{order.key}}
+          {{else}}
+            新订单
+          {{/if}}
+        </h2>
+      {{#if update}}
+        {{#if isReturnedToStore}}
+        {{#if clickedMarkButton}}
+        <button class="button button-positive mark-submit">确认标记: {{readyToReturnCCount}}项</button>
+        {{else}}
+        <button class="button button-positive button-outline mark-done">标记已取</button>
+        {{/if}}
+        {{/if}}
+      {{else}}
+        <button type="submit" class="button button-positive button-clear">创建</button>
+      {{/if}}
+
+    </div>
+    <div class="content has-header {{#if update}}has-footer{{else}}has-subfooter{{/if}} overflow-scroll">
+      {{#ionList}}
+        {{#if update}}
+              {{#if clickedMarkButton}}
+                {{#each items}}
+                  {{#if finish _id}}
+                  {{#ionItem item=this index=@index }}
+                    <h2>
+                      {{addOne @index}}-{{business.name}} ({{pairToString colors}}) {{#if finish _id}}<i class="icon ion-checkmark assertive"></i>{{/if}}
+                      <span class="item-note">
+                        {{#if discount}}原价：<span style="text-decoration: line-through">{{business.price}}元 </span>{{/if}}
+                      </span>
+                    </h2>
+                    <p>
+                      &nbsp;&nbsp;&nbsp;[{{pairsToString flaws effects accessories}}]
+                      <span class="item-note dark">
+                        {{#if discount}}折后：{{discountPrice business.price discount}}{{else}}原价：{{business.price}}{{/if}}元
+                      </span>
+                      <i class="icon {{#if check this}}ion-ios-checkmark positive{{else}}ion-ios-circle-outline{{/if}} check-icon" style="{{#if inStore _id}}{{else}}display: none{{/if}}"></i>
+                    </p>
+                  {{/ionItem}}
+                  {{else}}
+                  {{#ionItem item=this index=@index class="item-icon-right"}}
+                    <h2>
+                      {{addOne @index}}-{{business.name}} ({{pairToString colors}}) {{#if finish _id}}<i class="icon ion-checkmark assertive"></i>{{/if}}
+                      <span class="item-note">
+                        {{#if discount}}原价：<span style="text-decoration: line-through">{{business.price}}元 </span>{{/if}}
+                      </span>
+                    </h2>
+                    <p>
+                      &nbsp;&nbsp;&nbsp;[{{pairsToString flaws effects accessories}}]
+                      <span class="item-note dark">
+                        {{#if discount}}折后：{{discountPrice business.price discount}}{{else}}原价：{{business.price}}{{/if}}元
+                      </span>
+                      <i class="icon {{#if check this}}ion-ios-checkmark positive{{else}}ion-ios-circle-outline{{/if}} check-icon" style="{{#if inStore _id}}{{else}}display: none{{/if}}"></i>
+                    </p>
+                  {{/ionItem}}
+                  {{/if}}
+                {{/each}}
+              {{else}}
+                {{#each items}}
+
+                  {{#ionItem item=this index=@index}}
+                    <h2>
+                      {{addOne @index}}-{{business.name}} ({{pairToString colors}}) {{#if finish _id}}<i class="icon ion-checkmark assertive"></i>{{/if}}
+                      <span class="item-note">
+                        {{#if discount}}原价：<span style="text-decoration: line-through">{{business.price}}元 </span>{{/if}}
+                      </span>
+                    </h2>
+                    <p>
+                      &nbsp;&nbsp;&nbsp;[{{pairsToString flaws effects accessories}}]
+                      <span class="item-note dark">
+                        {{#if discount}}折后：{{discountPrice business.price discount}}{{else}}原价：{{business.price}}{{/if}}元
+                      </span>
+                    </p>
+
+                  {{/ionItem}}
+                {{/each}}
+              {{/if}}
+        {{else}}
+          {{#each items}}
+            {{#ionItem item=this class="selected-item-row" index=@index}}
+
+              <h2>
+                {{addOne @index}}-{{business.name}} ({{pairToString colors}})
+                <span class="item-note">
+                  {{#if discount}}原价：<span style="text-decoration: line-through">{{business.price}}元 </span>{{/if}}
+                </span>
+              </h2>
+              <p>
+                &nbsp;&nbsp;&nbsp;[{{pairsToString flaws effects accessories}}]
+                <span class="item-note dark">
+                  {{#if discount}}折后：{{discountPrice business.price discount}}{{else}}原价：{{business.price}}{{/if}}元
+                </span>
+              </p>
+
+            {{/ionItem}}
+          {{/each}}
+        {{/if}}
+      {{/ionList}}
+    </div>
+    <div class="bar {{#if update}}bar-footer{{else}}bar-subfooter order-new-subfooter{{/if}}">
+
+      <section class="slds-clearfix title">
+        <div class="slds-float--left">
+          <span class="slds-badge pay-order"><i class="icon ion-ios-pricetags"></i>确认收款（{{orderPrice}}元）</span>
+        </div>
+        <div class="slds-float--right">
+          <span class="slds-badge {{#if update}}{{else}}bind-customer{{/if}}">
+            <i class="icon ion-person-add"></i>
+            {{storeCustomer}}
+          </span>
+        </div>
+      </section>
+    </div>
+    {{#if update}}{{else}}
+    <div class="tabs tabs-icon-top animated bounceInRight move-top-border">
+      {{#each storeClasses}}
+        <a class="tab-item create-new-item" id="{{_id}}">
+          <i class="icon ion-plus-circled {{color}}"></i>
+          {{name}}
+        </a>
+      {{/each}}
+    </div>
+    {{/if}}
+  {{/ionModal}}
+</template>

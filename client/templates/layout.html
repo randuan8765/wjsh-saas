@@ -1,7 +1,7 @@
 <template name="layout">
   {{#ionBody}}
 
-    {{#ionSideMenuContainer}}
+    {{#ionSideMenuContainer side="left"}}
 
       {{#ionSideMenus}}
 
@@ -11,25 +11,29 @@
           </div>
           <div class="content has-header">
             <div class="list">
-              <a class="item item-icon-left" href="/" data-ion-menu-close>
-                <i class="icon ion-email"></i>
-                订单
-              </a>
-              <a class="item item-icon-left" data-ion-menu-close>
-                <i class="icon ion-email"></i>
-                历史订单
-              </a>
+              {{#if noStore}}
+              {{else}}
+                <a class="item item-icon-left" href="/" data-ion-menu-close>
+                  <i class="icon ion-email"></i>
+                  订单处理
+                </a>
+                <a class="item item-icon-left" href="/historyOrders" data-ion-menu-close>
+                  <i class="icon ion-email"></i>
+                  历史订单
+                </a>
+                <a class="item item-icon-left" href="/customers" data-ion-menu-close>
+                  <i class="icon ion-email"></i>
+                  客户信息<!--（能充值、退卡、调整余额）、交易记录-->
+                </a>
+                <a class="item item-icon-left" href="/storeClasses" data-ion-menu-close>
+                  <i class="icon ion-email"></i>
+                  业务配置<!--（记得加会员卡配置、充值模式\价格设置里特价）-->
+                </a>
+              {{/if}}
+
               <a class="item item-icon-left" href="/contacts" data-ion-menu-close>
                 <i class="icon ion-email"></i>
                 联系我们
-              </a>
-              <a class="item item-icon-left" href="/storeClasses" data-ion-menu-close>
-                <i class="icon ion-email"></i>
-                业务设置
-              </a>
-              <a class="item item-icon-left" href="#" data-ion-menu-close>
-                <i class="icon ion-email"></i>
-                系统设置
               </a>
               <a class="item item-icon-left ion-logout" href="#" data-ion-menu-close>
                 <i class="icon ion-email"></i>
@@ -40,7 +44,7 @@
           </div>
         {{/ionSideMenu}}
 
-        {{#ionSideMenu side="right"}}
+        <!--{{#ionSideMenu side="right"}}
           <div class="bar bar-header bar-dark">
             <h1 class="title">Right Menu</h1>
           </div>
@@ -51,7 +55,7 @@
               </div>
             </div>
           </div>
-        {{/ionSideMenu}}
+        {{/ionSideMenu}}-->
 
       {{/ionSideMenus}}
 

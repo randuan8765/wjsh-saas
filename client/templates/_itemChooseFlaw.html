@@ -1,0 +1,22 @@
+<template name="itemChooseFlaw">
+  {{#ionModal customTemplate=true}} <!-- class="animated slideInRight"-->
+    <div class="bar bar-header bar-stable">
+      <button data-dismiss="modal" type="button" class="button button-clear"><i class="icon ion-ios-close-empty"></i></button>
+        <h2 class="title">选择瑕疵</h2>
+      <button type="submit" class="button button-positive button-clear">保存</button>
+    </div>
+    <div class="content has-header overflow-scroll">
+      {{#ionList}}
+        {{#each flawsIter}}
+          {{#ionItem flaw=this class="item-checkbox selected-flaw-row"}}
+             <label class="checkbox">
+               <input type="checkbox" checked="{{flawChecked this}}">
+             </label>
+             {{this}}
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+    </div>
+
+  {{/ionModal}}
+</template>
