@@ -44,6 +44,9 @@ AccountsTemplates.configure({
         }
 
       }
+    },
+    preSignUpHook: function(password, info) {
+      info.profile.phase = "1";
     }
 });
 
